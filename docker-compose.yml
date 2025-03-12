@@ -21,6 +21,8 @@ services:
       context: ./backend
     container_name: server
     working_dir: /app
+    env_file:
+      - ./frontend/.env
     volumes:
       - ./backend:/app
       - ~/.m2:/root/.m2
