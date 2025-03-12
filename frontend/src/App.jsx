@@ -4,8 +4,13 @@ import './index.css';
 import CodeEditor from './components/editor/CodeEditor';
 import ChatPanel from './components/chat/ChatPanel';
 import TasksPanel from './components/tasks/TasksPanel';
+import IntroScreen from './components/intro/IntroScreen'; // Import our new component
 
 const App = () => {
+    // Track whether the user has started or not
+    const [hasStarted, setHasStarted] = useState(false);
+
+    // Panel for tasks or chat
     const [currentPanel, setCurrentPanel] = useState(null);
     const [currentTaskIndex, setCurrentTaskIndex] = useState(0);
 
@@ -15,6 +20,12 @@ const App = () => {
 
     const editorWidthClass = currentPanel ? "w-3/4" : "w-full";
 
+    // If user hasn't started, show the IntroScreen
+    if (!hasStarted) {
+        return <IntroScreen onStart={() => setHasStarted(true)} />;
+    }
+
+    // Once user has clicked "Start", we render the main UI
     return (
         <div className="App bg-gray-100 min-h-screen flex flex-col relative">
             <header className="bg-blue-600 text-white py-4 shadow-md">
