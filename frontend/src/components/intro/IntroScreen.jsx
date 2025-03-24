@@ -3,14 +3,11 @@
 import React, { useState } from 'react';
 
 const IntroScreen = ({ onStart }) => {
-    // Example form data (anonymous)
     const [formData, setFormData] = useState({
         experience: '',
         studyYear: '',
-        // ... add more fields if needed
     });
 
-    // Handle form input changes
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -18,9 +15,7 @@ const IntroScreen = ({ onStart }) => {
         });
     };
 
-    // When clicking “Start,” we pass the data up (or just call onStart if you don’t need data)
     const handleStart = () => {
-        // Optionally, do some validation or data handling here
         onStart(formData);
     };
 
@@ -88,8 +83,6 @@ const IntroScreen = ({ onStart }) => {
                                 <option value="3rd">3rd Year</option>
                             </select>
                         </div>
-
-                        {/* Add more anonymous fields as needed */}
                     </form>
 
                     {/* Start Button */}
